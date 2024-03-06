@@ -1,32 +1,52 @@
-function getShippingCost(country) {
-    let price;
-    let message;
-    switch (country) {
-        case 'China':
-            price = 100;
-            message = `Shipping to ${country} will cost ${price} credits`;
-            break;
-        case 'Chile':
-            price = 250;
-            message = `Shipping to ${country} will cost ${price} credits`;
-            break;
-        case 'Australia':
-            price = 170;
-            message = `Shipping to ${country} will cost ${price} credits`;
-            break;
-        case 'Jamaica':
-            price = 120;
-            message = `Shipping to ${country} will cost ${price} credits`;
-            break;
-        default:
-            message = "Sorry, there is no delivery to your country";
-    }
-    return message;
-}
+const getTotalBalanceByGender = (users, gender) => {
+  const totalBalanceByGender = users
+    .filter((user) => user.gender == gender)
+    .reduce((total, user) => {
+      return total + user.balance;
+    }, 0);
+  return totalBalanceByGender;
+};
 
-console.log(getShippingCost("Australia")); // "Shipping to Australia will cost 170 credits"
-console.log(getShippingCost("Germany")); // "Sorry, there is no delivery to your country"
-console.log(getShippingCost("China")); // "Shipping to China will cost 100 credits"
-console.log(getShippingCost("Chile")); // "Shipping to Chile will cost 250 credits"
-console.log(getShippingCost("Jamaica")); // "Shipping to Jamaica will cost 120 credits"
-console.log(getShippingCost("Sweden")); // "Sorry, there is no delivery to your country"
+// const allUsers уже объявлен в task-2, поэтому задал массиву объектов другое название
+
+const userList = [
+  {
+    name: "Moore Hensley",
+    gender: "male",
+    balance: 2811,
+  },
+  {
+    name: "Sharlene Bush",
+    gender: "female",
+    balance: 3821,
+  },
+  {
+    name: "Ross Vazquez",
+    gender: "male",
+    balance: 3793,
+  },
+  {
+    name: "Elma Head",
+    gender: "female",
+    balance: 2278,
+  },
+  {
+    name: "Carey Barr",
+    gender: "male",
+    balance: 3951,
+  },
+  {
+    name: "Blackburn Dotson",
+    gender: "male",
+    balance: 1498,
+  },
+  {
+    name: "Sheree Anthony",
+    gender: "female",
+    balance: 2764,
+  },
+];
+
+console.log(getTotalBalanceByGender(userList, "male")); // 12053
+
+console.log(getTotalBalanceByGender(userList, "female")); // 8863
